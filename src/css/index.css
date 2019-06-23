@@ -1,0 +1,74 @@
+hr {
+    width: 200px;
+    margin: 0 auto;
+}
+
+#title {
+    margin-top: 150px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+
+
+#description {
+    margin: 30px auto 150px;
+    width: 400px;
+    text-align: center;
+    font-size: 17px;
+    line-height: 1.4;
+}
+
+#wrapper {
+    text-align:center;
+}
+
+.stat-section {
+    display:inline-block;
+    margin: 0 50px;
+}
+
+.stat-section img {
+    float: left;
+    height: 50px;
+}
+
+.stat-section div {
+    float: left;
+    margin-left: 20px;
+    text-align: left;
+}
+
+.stat-section h3 {
+    font-size: 30px;
+}
+
+h2 {
+    margin: 150px 0 5px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.member {
+    display:inline-block;
+    margin: 40px 30px;
+}
+
+.member img {
+    height: 100px;
+}
+
+.member h4 {
+    margin-top: 5px;
+    font-size: 20px;
+}
+
+.member p {
+    margin-top: 3px;
+}
+
+#copyright {
+    text-align: center;
+    margin: 100px 0 15px;
+}
