@@ -16,7 +16,13 @@ class Tile {
         var y = r * TILE_SIZE + HEADER_HEIGHT;
 
         if (this.isFlagged) {
-            image(flagImage, x, y, TILE_SIZE, TILE_SIZE);
+            if (done && !this.isBomb) {
+                image(numberTileImages[0], x, y, TILE_SIZE, TILE_SIZE);
+                image(bombImage, x, y, TILE_SIZE, TILE_SIZE);
+                image(xImage, x, y, TILE_SIZE, TILE_SIZE);
+            } else {
+                image(flagImage, x, y, TILE_SIZE, TILE_SIZE);
+            }
         } else if (this.isHidden) {
             image(tileImage, x, y, TILE_SIZE, TILE_SIZE);
         } else if (this.isBomb) {

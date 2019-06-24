@@ -16,12 +16,14 @@ var doneTime;
 var flagImage;
 var bombImage;
 var tileImage;
+var xImage;
 var numberTileImages = [];
 
 function preload() {
     flagImage = loadImage('src/projects/minesweeper/res/flagged.png');
     bombImage = loadImage('src/projects/minesweeper/res/bomb.png');
     tileImage = loadImage('src/projects/minesweeper/res/facingDown.png');
+    xImage = loadImage('src/projects/minesweeper/res/x.png');
     for (var i = 0; i < 9; i++) {
         numberTileImages.push(loadImage('src/projects/minesweeper/res/' + i + '.png'));
     }
