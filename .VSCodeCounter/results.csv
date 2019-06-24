@@ -1,0 +1,11 @@
+filename, language, HTML, CSS, JavaScript, Markdown, comment, blank, total
+README.md, Markdown, 0, 0, 0, 2, 0, 2, 4
+index.html, HTML, 63, 0, 0, 0, 0, 13, 76
+minesweeper.html, HTML, 15, 0, 0, 0, 0, 6, 21
+src/index/index.css, CSS, 0, 59, 0, 0, 0, 15, 74
+src/libraries/p5.js, JavaScript, 0, 0, 27812, 0, 3821, 992, 32625
+src/main.css, CSS, 0, 61, 0, 0, 0, 13, 74
+src/main.js, JavaScript, 0, 0, 16, 0, 0, 2, 18
+src/projects/minesweeper/Minesweeper.js, JavaScript, 0, 0, 190, 0, 0, 26, 216
+src/projects/minesweeper/Tile.js, JavaScript, 0, 0, 26, 0, 0, 6, 32
+Total, -, 78, 120, 28044, 2, 3821, 1075, 33140

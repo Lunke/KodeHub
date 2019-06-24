@@ -71,3 +71,29 @@ body {
 }
 
 .navigation-projects:hover .navigation-projects-content {display: block;}
+
+
+hr {
+    width: 200px;
+    margin: 0 auto;
+}
+
+#title {
+    margin-top: 150px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+#description {
+    margin: 40px auto 100px;
+    width: 400px;
+    text-align: center;
+    font-size: 17px;
+    line-height: 1.4;
+}
+
+#copyright {
+    text-align: center;
+    margin: 100px 0 15px;
+}

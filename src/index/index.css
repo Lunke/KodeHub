@@ -1,24 +1,3 @@
-hr {
-    width: 200px;
-    margin: 0 auto;
-}
-
-#title {
-    margin-top: 150px;
-    text-align: center;
-    font-weight: bold;
-    font-size: 40px;
-}
-
-
-
-#description {
-    margin: 30px auto 150px;
-    width: 400px;
-    text-align: center;
-    font-size: 17px;
-    line-height: 1.4;
-}
 
 #wrapper {
     text-align:center;
@@ -26,7 +5,7 @@ hr {
 
 .stat-section {
     display:inline-block;
-    margin: 0 50px;
+    margin: 50px 50px 0px;
 }
 
 .stat-section img {
@@ -66,9 +45,4 @@ h2 {
 
 .member p {
     margin-top: 3px;
-}
-
-#copyright {
-    text-align: center;
-    margin: 100px 0 15px;
 }
