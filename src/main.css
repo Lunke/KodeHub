@@ -97,3 +97,9 @@ hr {
     text-align: center;
     margin: 100px 0 15px;
 }
+
+#canvas_wrapper * {
+    margin: 0 auto;
+    display: block;
+    border: 3px solid black;
+}

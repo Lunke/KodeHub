@@ -94,7 +94,7 @@ function mouseReleased() {
     } else {
         var tile = tiles[r][c];
         if (tile.isHidden) {
-            if (mouseButton === LEFT && !keyIsDown(16)) {
+            if (mouseButton === LEFT && !keyIsDown(16) && !tile.isFlagged) {
                 if (tile.isBomb) {
                     revealAll();
                     done = true;

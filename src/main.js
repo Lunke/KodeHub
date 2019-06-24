@@ -10,7 +10,7 @@ window.onload = function () {
     <button class="navigation-projects-button">Prosjekter</button>
     <div class="navigation-projects-content">
         <a href="minesweeper.html">Minesweeper</a>
-
+        <a href="nanogram.html">Nanogram</a>
     </div>
     </div>
 `;
