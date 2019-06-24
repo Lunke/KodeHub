@@ -1,7 +1,7 @@
 
 window.onload = function () {
     document.getElementById('navigation-bar').innerHTML = `
-    <a href="/index.html">
+    <a href="index.html">
     <img src="src/index/logo_white_small.png">
     <h1>Hjem</h1>
     </a>
