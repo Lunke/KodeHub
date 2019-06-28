@@ -1,10 +1,14 @@
-var HEADER_HEIGHT = 100;
+var TOTAL_IMAGES = 4;
+var HEADER_HEIGHT = 150;
+var BUTTON_HEIGHT = 50;
+var BUTTON_PADDING = 15;
 var HEART_SIZE = 40;
 var HEART_PADDING = 10;
 var BOX_PADDING = 3;
 var TILE_SIZE = 40;
 var NUM_ROWS;
 var NUM_COLS;
+var ERROR_FLASH_TIME = 100;
 
 var totalLives = 3;
 var lives = totalLives;
@@ -13,18 +17,28 @@ var tiles = [];
 var done = false;
 var won = false;
 
+var errorTime;
+var showError = false;
+var wrongClick = false;
+
 var image_heart;
 var image_heart_empty;
 
-var blackImage;
-var colorImage;
+var blackImages = [];
+var colorImages = [];
+var currentImageIndex = 0;
+
+var buttons = [];
 
 function preload() {
     image_heart = loadImage("src/projects/nanogram/res/heart.png");
     image_heart_empty = loadImage("src/projects/nanogram/res/heart_empty.png");
 
-    blackImage = loadImage("src/projects/nanogram/res/0_black.png");
-    colorImage = loadImage("src/projects/nanogram/res/0_color.png");
+    for (var i = 0; i < TOTAL_IMAGES; i++) {
+        blackImages.push(loadImage("src/projects/nanogram/res/" + i + "_black.png"));
+        colorImages.push(loadImage("src/projects/nanogram/res/" + i + "_color.png"));
+    }
+
 }
 
 function setup() {
@@ -32,25 +46,32 @@ function setup() {
 
     var canvas = createCanvas((NUM_COLS + 2) * TILE_SIZE + 1, HEADER_HEIGHT + (NUM_ROWS + 2) * TILE_SIZE + 1);
     canvas.parent("canvas_wrapper");
+
+    var buttonWidth = (width - (((TOTAL_IMAGES + 1) * BUTTON_PADDING))) / TOTAL_IMAGES;
+    for (var i = 0; i < TOTAL_IMAGES; i++) {
+        var button = new Button(BUTTON_PADDING + (buttonWidth + BUTTON_PADDING) * i, 0, buttonWidth, BUTTON_HEIGHT, i);
+        buttons.push(button)
+    }
+    buttons[0].active = true;
 }
 
 
 
 function setupTiles() {
     tiles = [];
-    blackImage.loadPixels();
-    colorImage.loadPixels();
+    blackImages[currentImageIndex].loadPixels();
+    colorImages[currentImageIndex].loadPixels();
 
-    NUM_ROWS = blackImage.height;
-    NUM_COLS = blackImage.width;
+    NUM_ROWS = blackImages[currentImageIndex].height;
+    NUM_COLS = blackImages[currentImageIndex].width;
 
     for (var r = 0; r < NUM_ROWS; r++) {
         var row = [];
         for (var c = 0; c < NUM_COLS; c++) {
             var index = (r * NUM_ROWS + c) * 4;
             var tile = new Tile();
-            tile.isPixel = blackImage.pixels[index + 3] == 255;
-            tile.color = [colorImage.pixels[index], colorImage.pixels[index + 1], colorImage.pixels[index + 2]];
+            tile.isPixel = blackImages[currentImageIndex].pixels[index + 3] == 255;
+            tile.color = [colorImages[currentImageIndex].pixels[index], colorImages[currentImageIndex].pixels[index + 1], colorImages[currentImageIndex].pixels[index + 2]];
             row.push(tile);
         }
         tiles.push(row);
@@ -58,6 +79,12 @@ function setupTiles() {
 }
 
 function draw() {
+    if (errorTime) {
+        if (new Date() - errorTime > ERROR_FLASH_TIME) {
+            errorTime = null;
+            showError = false;
+        }
+    }
     background(255);
 
     strokeWeight(2);
@@ -129,13 +156,18 @@ function draw() {
     var startX = (width - tot_width) / 2;
     for (var i = 0; i < totalLives; i++) {
         var img = i < lives ? image_heart : image_heart_empty;
-        image(img, startX + i * HEART_SIZE + (HEART_PADDING * i), 10, HEART_SIZE, HEART_SIZE);
+        image(img, startX + i * HEART_SIZE + (HEART_PADDING * i), BUTTON_HEIGHT + 30, HEART_SIZE, HEART_SIZE);
     }
 
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].draw();
+    }
+
+    fill(0);
     if (done) {
         textAlign(CENTER, TOP);
         textSize(12);
-        text("Space to restart", width / 2, HEART_SIZE + 20);
+        text("Space to restart", width / 2, 125);
     }
 }
 
@@ -169,7 +201,7 @@ function getTextForRow(row) {
         }
     }
     if (count != 0) {
-        text += count;
+        text += " " + count;
     }
 
     if (text == "") {
@@ -202,6 +234,20 @@ function getTextForCol(col) {
 
 function mousePressed() {
     tapped();
+    for (var i = 0; i < buttons.length; i++) {
+        if (buttons[i].hit(mouseX, mouseY)) {
+            buttons[this.currentImageIndex].active = false;
+            this.currentImageIndex = buttons[i].index;
+            buttons[this.currentImageIndex].active = true;
+            this.setupTiles();
+        }
+    }
+}
+
+function mouseReleased() {
+    if (wrongClick) {
+        wrongClick = false;
+    }
 }
 
 function mouseDragged() {
@@ -211,7 +257,7 @@ function mouseDragged() {
 function tapped() {
     var c = floor(mouseX / TILE_SIZE) - 2;
     var r = floor((mouseY - HEADER_HEIGHT) / TILE_SIZE) - 2;
-    if (c < 0 || c >= NUM_COLS || r < 0 || r >= NUM_ROWS || done) {
+    if (wrongClick || c < 0 || c >= NUM_COLS || r < 0 || r >= NUM_ROWS || done) {
         return;
     }
     var tile = tiles[r][c];
@@ -268,6 +314,9 @@ function revealCell(x, y, leftClicked) {
     var tile = tiles[y][x];
     tile.isHidden = false;
     if (leftClicked != tile.isPixel) {
+        errorTime = new Date();
+        showError = true;
+        wrongClick = true;
         lives--;
         if (lives == 0) {
             done = true;

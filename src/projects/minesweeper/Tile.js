@@ -12,7 +12,7 @@ class Tile {
     }
 
     drawAt(r, c) {
-        var x = c * TILE_SIZE
+        var x = c * TILE_SIZE;
         var y = r * TILE_SIZE + HEADER_HEIGHT;
 
         if (this.isFlagged) {

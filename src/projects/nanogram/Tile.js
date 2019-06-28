@@ -14,8 +14,13 @@ class Tile {
             noStroke();
             fill(this.color[0], this.color[1], this.color[2]);
         } else if (this.isHidden) {
-            stroke(180, 190, 205);
-            fill(255);
+            if (showError) {
+                stroke(100, 0, 0);
+                fill(255, 0, 0);
+            } else {
+                stroke(180, 190, 205);
+                fill(255);
+            }
         } else {
             if (this.isPixel) {
                 stroke(18, 35, 54);
