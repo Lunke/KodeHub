@@ -12,7 +12,7 @@ body {
     z-index: 2;
     height: 70px;
     width: 100%;
-    background-color: #4878B0;
+    background-color: #2654a2;
     position: absolute;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
@@ -26,15 +26,21 @@ body {
     float: left;
 }
 
-#navigation-bar img {
+#navigation-bar #logo {
     height: 30px;
-    margin: 20px 20px 20px 50px;
+    margin: 20px 50px;
+}
+
+#navigation-bar #arrow {
+    height: 12px;
+    transform: translateX(-10px);
 }
 
 #navigation-bar h1 {
-    font-size: 22px;
+    font-size: 19px;
     font-weight: 400;
-    padding-top: 21px;
+    padding-top: 24px;
+    letter-spacing: 1px;
 }
 
 .navigation-projects {
@@ -45,9 +51,10 @@ body {
 
 
 .navigation-projects-button {
-    background-color: #4878B0;
+    background-color: #2654a2;
     color: white;
-    font-size: 22px;
+    font-size: 19px;
+    letter-spacing: 1px;
     border: none;
     height: 70px;
     padding: 0 20px;
@@ -56,7 +63,7 @@ body {
 .navigation-projects-content {
     display: none;
     position: absolute;
-    background-color: #4878B0;
+    background-color: #2654a2;
     border-radius: 0 0 5px 5px;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
@@ -65,8 +72,9 @@ body {
 
 .navigation-projects-content a {
     color: white;
-    padding: 12px 16px;
+    padding: 12px 20px;
     text-decoration: none;
+    letter-spacing: 1px;
     display: block;
 }
 

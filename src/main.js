@@ -40,12 +40,13 @@ function projectTemplate(project) {
 window.addEventListener('load', function () {
     document.getElementById('navigation-bar').innerHTML = `
     <a href="index.html">
-    <img src="src/index/logo_white_small.png">
-    <h1>Hjem</h1>
+    <img id="logo" src="src/index/logo_white_small.png">
+    <h1>HJEM</h1>
     </a>
 
     <div class="navigation-projects">
-    <button class="navigation-projects-button">Prosjekter</button>
+    <button class="navigation-projects-button">PROSJEKTER</button>
+    <img id="arrow" src="src/index/arrow_down.png">
     <div class="navigation-projects-content">
      ${projects.map(projectTemplate).join('')}
     </div>

@@ -240,6 +240,7 @@ function mousePressed() {
             this.currentImageIndex = buttons[i].index;
             buttons[this.currentImageIndex].active = true;
             this.setupTiles();
+            this.restart();
         }
     }
 }

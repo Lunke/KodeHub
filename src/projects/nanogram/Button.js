@@ -19,7 +19,7 @@ class Button {
 
     draw() {
         if (this.active) {
-            fill(72, 120, 176);
+            fill(38, 84, 162);
         } else {
             fill(165, 190, 215);
         }
