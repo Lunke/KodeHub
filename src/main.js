@@ -26,6 +26,9 @@ let projects = [
     }, {
         "name": "Nanogram",
         "html": "nanogram.html"
+    }, {
+        "name": "Slide Puzzle",
+        "html": "slidepuzzle.html"
     }
 ];
 
