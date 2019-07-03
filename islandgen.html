@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="src/projects/islandgen/TemplateData/style.css">
+    <script src="src/projects/islandgen/TemplateData/UnityProgress.js"></script>
+    <script src="src/projects/islandgen/Build/UnityLoader.js"></script>
+    <script>
+        var unityInstance = UnityLoader.instantiate("unityContainer", "src/projects/islandgen/Build/IslandGen.json", { onProgress: UnityProgress });
+    </script>
+
+    <link rel="stylesheet" href="./src/main.css">
+    <script type="text/javascript" src="./src/main.js"></script>
+    <style>
+        #gameContainer {
+            max-width: 960px;
+            max-height: 600px;
+            margin: 0px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navigation-bar"></div>
+
+    <p id="title">Island Generator</p>
+    <hr>
+    <p id="description">Island Generator er en prototype utviklet av Kristoffer i Unity med C#.<br><br>Trykk på Generate
+        for
+        å
+        generere tilfeldige øyer</p>
+
+    <div id="gameContainer">
+        <div class="webgl-content">
+            <div id="unityContainer"></div>
+        </div>
+    </div>
+
+
+    <p id="copyright">© 2019 KodeHub</p>
+</body>
+
+</html>

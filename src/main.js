@@ -3,7 +3,7 @@ let members = [
         "id": "0",
         "name": "Kristoffer",
         "image": "src/members/kristoffer.png",
-        "languages": "Javascript"
+        "languages": "Javascript, C#"
     }, {
         "id": "1",
         "name": "Nikolai",
@@ -29,6 +29,9 @@ let projects = [
     }, {
         "name": "Slide Puzzle",
         "html": "slidepuzzle.html"
+    }, {
+        "name": "Island Generator",
+        "html": "islandgen.html"
     }
 ];
 
