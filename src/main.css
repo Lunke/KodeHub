@@ -80,6 +80,10 @@ body {
 
 .navigation-projects:hover .navigation-projects-content {display: block;}
 
+.github-link {
+    text-decoration: none;
+    color: #2654a2;
+}
 
 hr {
     width: 200px;
